@@ -19,6 +19,14 @@ const personalMovieDB = {
             genres: [],
             privat: true
         };
+        function toggleVisibleMyDB () {
+            if (personalMovieDB.privat == false) {
+                personalMovieDB.privat = true
+            } else {
+                personalMovieDB.privat = false
+            }
+        }
+toggleVisibleMyDB();
 
 function rememberMyFilms() {
     for (let i = 0; i < 2; i++) {
@@ -62,7 +70,15 @@ showMyDB ();
 
 function writeYourGenres () {
     for (let i = 1; i <= 3; i++){
-        personalMovieDB.genres[i - 1] = prompt(`Ваш любимый жанр под номером ${i}`);
+        let a = personalMovieDB.genres[i - 1] = prompt(`Ваш любимый жанр под номером ${i}`);
+        if (a != null && a.length < 50 && a != '') {
+            personalMovieDB.genres[i-1] = a; 
+        console.log('done')
+        } else {
+            console.log('error')
+            i--;
+        }
+    
     }
 }
 
